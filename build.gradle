@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.6'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'eclipse'
 }
 
 group = 'com.example'
@@ -19,6 +20,7 @@ dependencies {
 	implementation 'org.springframework.integration:spring-integration-amqp:5.5.2'
 	testImplementation 'org.awaitility:awaitility:4.1.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.junit.platform:junit-platform-launcher:1.5.2'
 	testImplementation 'org.springframework.integration:spring-integration-test'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 }
