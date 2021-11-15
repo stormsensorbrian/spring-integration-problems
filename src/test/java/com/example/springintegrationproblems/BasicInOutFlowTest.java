@@ -3,7 +3,6 @@ package com.example.springintegrationproblems;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.verify;
 
@@ -23,10 +22,9 @@ import org.springframework.integration.test.mock.MockIntegration;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 @SpringBootTest
-@DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
+@DirtiesContext
 @SpringIntegrationTest(noAutoStartup = {"inboundEndpoint"})
 class BasicInOutFlowTest {
     
