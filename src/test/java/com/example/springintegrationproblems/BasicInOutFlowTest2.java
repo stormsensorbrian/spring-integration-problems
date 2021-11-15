@@ -27,7 +27,7 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 @SpringBootTest
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
-@SpringIntegrationTest(noAutoStartup = {"inboundEndpoint"})
+@SpringIntegrationTest(noAutoStartup = {"secondInboundEndpoint"})
 class BasicInOutFlowTest2 {
     
     @Autowired
@@ -37,7 +37,7 @@ class BasicInOutFlowTest2 {
     AmqpTemplate template;
 
     @Autowired
-    @Qualifier("inboundEndpoint")
+    @Qualifier("secondInboundEndpoint")
     AbstractEndpoint inbound;
     
     @Test
@@ -45,7 +45,7 @@ class BasicInOutFlowTest2 {
         assertFalse(inbound.isRunning());
         
         MessageHandler messageHandler = MockIntegration.mockMessageHandler().handleNext(m ->{});
-        context.substituteMessageHandlerFor("outboundEndpoint", messageHandler);
+        context.substituteMessageHandlerFor("outboundAgainEndpoint", messageHandler);
         ArgumentCaptor<Message<?>> captor = MockIntegration.messageArgumentCaptor();
         
         inbound.start();
@@ -54,10 +54,10 @@ class BasicInOutFlowTest2 {
             assertTrue(inbound.isRunning());
         });
         
-        template.convertAndSend("inbound", "foo");
+        template.convertAndSend("out", "foo");
         
         verify(messageHandler, timeout(5000)).handleMessage(captor.capture());
         Message<String> response = (Message<String>) captor.getValue();
-        assertThat(response.getPayload()).isEqualTo("FOO");
+        assertThat(response.getPayload()).isEqualTo("foo");
     }
 }
