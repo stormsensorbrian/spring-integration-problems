@@ -31,4 +31,11 @@ public class BasicInOutFlow {
                 .get();
     }
     
+    @Bean
+    public IntegrationFlow secondFlow() {
+        return IntegrationFlows.from(Amqp.inboundAdapter(factory, "out").id("secondInboundEndpoint"))
+                .handle(Amqp.outboundAdapter(template).routingKey("outAgain"), e -> e.id("outboundAgainEndpoint"))
+                .get();
+    }
+    
 }

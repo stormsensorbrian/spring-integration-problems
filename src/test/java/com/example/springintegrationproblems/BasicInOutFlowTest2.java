@@ -28,7 +28,7 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 @SpringBootTest
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
 @SpringIntegrationTest(noAutoStartup = {"inboundEndpoint"})
-class BasicInOutFlowTest {
+class BasicInOutFlowTest2 {
     
     @Autowired
     MockIntegrationContext context;

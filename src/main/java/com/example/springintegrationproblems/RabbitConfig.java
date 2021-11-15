@@ -23,4 +23,9 @@ public class RabbitConfig {
     public Queue out() {
         return new Queue("out", true, false, false, defaultQueueArgs());
     }
+    
+    @Bean
+    public Queue outAgain() {
+        return new Queue("outAgain", true, false, false, defaultQueueArgs());
+    }
 }

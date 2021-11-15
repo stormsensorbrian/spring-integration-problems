@@ -14,14 +14,20 @@ repositories {
 }
 
 dependencies {
+implementation 'org.springframework.boot:spring-boot-starter-actuator'
+implementation 'io.projectreactor.netty:reactor-netty'
 	implementation 'org.springframework.boot:spring-boot-starter-integration'
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	implementation 'org.springframework.integration:spring-integration-core:5.5.2'
 	implementation 'org.springframework.integration:spring-integration-amqp:5.5.2'
+	implementation 'org.springframework:spring-webflux'
+	
 	testImplementation 'org.awaitility:awaitility:4.1.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.junit.platform:junit-platform-launcher:1.5.2'
 	testImplementation 'org.springframework.integration:spring-integration-test'
+	
+	
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 }
 
